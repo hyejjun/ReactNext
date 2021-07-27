@@ -8,7 +8,7 @@ const Index = () => {
                 <title>Blog</title>
             </Head>
             <BlogLayout>
-                hello world             {/* 이 내용이 children 내용이 된다.*/}
+                {/* hello world             이 내용이 children 내용이 된다. */}
                 <div>
                     {/* public 
                         -> localhost:3001/[폴더명]/사진.jpg   //폴더가 있다면
