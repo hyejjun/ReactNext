@@ -1,21 +1,8 @@
 import FormLayout from "../components/FormLayout"
 import Head from 'next/head'
-import { useState } from "react"
 import Router from "next/router"
+import useInput from "../hooks/useInput"
 
-/* userid userpw 한번에 통제 - custum hook - 이제부터 많이 쓸거임*/
-const useInput = (defaultValue) => {
-    const [value, setValue] = useState(defaultValue)
-    const onChange = e => {
-        const { value } = { ...e.target }
-        setValue(value)
-    }
-
-    return {
-        value,
-        onChange
-    }
-}
 
 const Login = () => {
     const userid = useInput('')         // 결과물이 Object
@@ -57,11 +44,14 @@ const Login = () => {
     {...{'value':'ok'}}
 
     2. 위 아래 동일한거임
-    {
-        value :'web7722'
-        onChange:()=>{alert(1)}
-    }
+    {...{value :'web7722', onChange:()=>{alert(1)}}}
     value = 'web7722' onChange={()=>{alert(1)}}
+
+    console.log(userid)
+    {value:"", onChange:f}
+    이렇게 찍힘
+    위에처럼 바벨 문법으로 쓸 수 있게 객체 형태로 반환이 되도록 해준거임 그래서
+    input 에다가 {...userid} 하면 저렇게 사용이 가능한거임
 
 */
 

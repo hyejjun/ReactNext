@@ -2,7 +2,7 @@ import Link from 'next/link'        // 링크 처리
 import NavToggle from '../NavToggle'
 import Styled from 'styled-components'
 import { useContext } from 'react'
-import Store from '../../pages/store/context'
+import Store from '../../store/context'
 
 
 const HeaderContainer = Styled.div`

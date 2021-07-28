@@ -1,5 +1,6 @@
 import Styled from 'styled-components'
 import { useState } from 'react'
+import Accordion from './Accordion'
 
 const Toggle = Styled.div`
     background : transparent;
@@ -37,30 +38,6 @@ const Toggle = Styled.div`
     & > .nav-toggle:checked + label > span:nth-child(3){ bottom : 50%; transform: translateY(50%) rotate(-45deg); }
 `
 
-const Accordion = Styled.div`
-    position: absolute;
-    width: 100%;
-    left : 0px;
-    top: 10vh;
-    z-index : 5;
-    background: #fff;
-    padding : 5vh 0;
-
-    /* javascript 영역이다 - 아코디언이 visible 값에 따라 보이고 안보이게끔 함 */
-    display:  ${props=>(props.flag? 'block' : 'none')};
-
-    & > ul {
-        display: flex;
-        flex-direction : column;
-    }
-
-    & > ul >li {
-        margin-top : 20px;
-        text-align : center;
-    }
-`
-
-
 
 const NavToggle = () => {
     // 상태값을 설정함
@@ -85,15 +62,7 @@ const NavToggle = () => {
                     <span></span>
                 </label>
                 {/* 메뉴생성 */}
-                <Accordion flag = {visible}>             {/* styled component 는 props 값을 줄 수 있다.*/}
-                    <ul>
-                        <li>대분류메뉴1</li>
-                        <li>대분류메뉴2</li>
-                        <li>대분류메뉴3</li>
-                        <li>대분류메뉴4</li>
-                        <li>대분류메뉴5</li>
-                    </ul>
-                </Accordion>
+                <Accordion visible={visible} handleToggle={handleToggle}/>
             </Toggle>
         </>
     )

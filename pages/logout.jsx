@@ -1,4 +1,4 @@
-import Store from "./store/context"
+import Store from "../store/context"
 import { useContext, useEffect } from "react"
 import Router from 'next/router'
 
