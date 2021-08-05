@@ -1,9 +1,9 @@
 import Link from 'next/link'        // 링크 처리
 import NavToggle from '../NavToggle'
 import Styled from 'styled-components'
-import { useContext } from 'react'
-import Store from '../../store/context'
-
+//import { useContext } from 'react'
+//import Store from '../../store/context'
+import { useSelector } from 'react-redux'
 
 const HeaderContainer = Styled.div`
     display:flex;
@@ -28,17 +28,40 @@ const Gnb = Styled.ul`
 
     /* 미디어 쿼리 PC 내용들 */
     @media only screen and (min-width:768px){
-        display: none;
+        //display: none;
     }
     
 `
 
+const LoginComponent = () => {
+    return (
+        <>
+            <li><Link href='/login'><a>로그인</a></Link></li>
+            <li><Link href='/join'><a>회원가입</a></Link></li>
+        </>
+    )
+}
+
+const LogoutComponent = () => {
+    return (
+        <>
+            <li><Link href='/logout'><a>로그아웃</a></Link></li>
+            <li><Link href='/profile'><a>회원정보</a></Link></li>
+        </>
+    )
+}
+
 const Header = () => {
+    /*
     // 인자값이? - createContext를 담았던 변수가 들어간다.
     const globalStore = useContext(Store)       // {IsLogin : false} -> {state : {IsLogin:flase}, dispatch:()=>{}}   reducer를 사용하면서 값이 이렇게 변함
     // console.log(globalStore);
     const { IsLogin } = globalStore.state       // true or false
+    console.log(IsLogin);*/
+
+    const { IsLogin } = useSelector((state) => state.user)     //redux에 저장된 상태값 가져오기!! (0729)
     console.log(IsLogin);
+
     return (
         <>
             <HeaderContainer className="header">
@@ -56,33 +79,7 @@ const Header = () => {
                     </li>
 
                     {
-                        IsLogin === false
-                            ?
-                            <>
-                                <li>
-                                    <Link href='/login'>
-                                        <a>로그인</a>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href='/join'>
-                                        <a>회원가입</a>
-                                    </Link>
-                                </li>
-                            </>
-                            :
-                            <>
-                                <li>
-                                    <Link href='/logout'>
-                                        <a>로그아웃</a>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href='/profile'>
-                                        <a>회원정보</a>
-                                    </Link>
-                                </li>
-                            </>
+                        IsLogin === false ? <LoginComponent/> : <LogoutComponent/>
                     }
                 </Gnb>
                 {/* 여기에 NavToggle 넣어보자 */}

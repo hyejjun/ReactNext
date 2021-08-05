@@ -4,6 +4,7 @@ import Head from 'next/head'
 import Store, { initalState } from '../store/context'
 import { useContext, useReducer } from 'react'
 import { reducer } from '../store/reducer'
+import wrapper from '../store/configureStore'
 
 const App = ({ Component }) => {
     const globalContext = useContext(Store)
@@ -24,4 +25,5 @@ const App = ({ Component }) => {
     )
 }
 
-export default App
+
+export default wrapper.withRedux(App)

@@ -1,40 +1,13 @@
 import Styled from "styled-components"
 import Link from 'next/link'
-
-// server 에서 이렇게 데이터가 들어왔다고 가정하고~
-const menu = [
-    {
-        id: '1',
-        category: 'HTML',
-        url: '/posts/HTML'
-    },
-    {
-        id: '2',
-        category: 'C++',
-        url: '/posts/C++'
-    },
-    {
-        id: '3',
-        category: 'CSS',
-        url: '/posts/CSS'
-    },
-    {
-        id: '4',
-        category: 'JAVA',
-        url: '/posts/JAVA'
-    },
-    {
-        id: '5',
-        category: 'JS',
-        url: '/posts/JS'
-    }
-]
+import { useSelector } from "react-redux"
 
 
-const Accordion = ({ visible , handleToggle }) => {
-    
+const Accordion = ({ visible, handleToggle }) => {
+    const { menu } = useSelector((state) => state.category)
+
     // 여기서 NavToggle.jsx 에 있는 visible 값을 조작하기 위해서 handleToggle도 넘겨 받음. - 아코디언을 닫히고 열리게 하는 기능 
-    const handelClick = () =>{
+    const handelClick = () => {
         handleToggle()
     }
     // 혹은 onClick 에 바로 handleToggle 써도 된다.
