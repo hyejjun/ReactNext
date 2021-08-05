@@ -1,2 +1,4 @@
 /node_modules
 /hyejun-laptop.pem
+*hyejun-laptop.pem
+*.next
